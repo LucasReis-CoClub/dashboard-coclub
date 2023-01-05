@@ -9,9 +9,9 @@ const Login: FC = () => {
       <S.Title>Sign in to coClub as Admin</S.Title>
 
       <S.InputsContainer>
-        <S.Input />
+        <S.Input placeholder='Email'/>
 
-        <S.Button />
+        <S.Button label='Continue'/>
       </S.InputsContainer>
     </S.Container>
   )

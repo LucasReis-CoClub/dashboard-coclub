@@ -6,7 +6,7 @@ import { colors } from 'styles/colors'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 18vw;
+  width: 100%;
   border-right: 1px solid ${colors.lightGray};
 `
 

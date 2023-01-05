@@ -1,18 +1,26 @@
 import React, { FC } from 'react'
-import { useRouteError } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import * as S from './styles'
 
 const Error: FC = () => {
-  const error: any = useRouteError()
+  const navigate = useNavigate()
 
   return (
     <S.Container>
-      <S.Title>Oops!</S.Title>
+      <S.LogoIcon />
 
-      <S.Subtitle>Sorry, an unexpected error has occurred.</S.Subtitle>
+      <S.Content>
+        <S.TextContainer>
+          <S.Title>Oops!</S.Title>
 
-      <S.Error>{error?.statusText || error?.message}</S.Error>
+          <S.Subtitle>{' We can\'t seem to find the page you\'re looking for.'}</S.Subtitle>
+
+          <S.Button label='Home' onClick={() => navigate('/')}/>
+        </S.TextContainer>
+
+        <S.NoPageIcon />
+      </S.Content>
     </S.Container>
   )
 }

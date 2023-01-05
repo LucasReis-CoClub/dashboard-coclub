@@ -15,7 +15,13 @@ export const Main = styled.main`
   flex-direction: row;
 `
 
+export const SidebarContainer = styled.div`
+  display: flex;
+  flex: 0.2;  
+`
+
 export const Content = styled.div`
-  display: flex;  
-  flex: 1;
+  display: flex;
+  flex: 0.8;  
+  overflow: hidden;
 `

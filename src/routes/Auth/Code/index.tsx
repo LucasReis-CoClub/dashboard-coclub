@@ -16,8 +16,7 @@ const Code: FC = () => {
       backgroundColor: colors.lightShadow,
       color: colors.primary,
       border: `1px solid ${colors.lightGray}`,
-      textAlign: 'center',
-      '-webkit-appearance': 'textfield'
+      textAlign: 'center'
     }
   }
   const [code, setCode] = useState('')

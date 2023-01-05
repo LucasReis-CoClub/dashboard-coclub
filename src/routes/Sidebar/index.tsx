@@ -21,6 +21,7 @@ const Sidebar: FC<Props> = ({ routes }) => {
         <Header />
 
         <S.Main>
+          <S.SidebarContainer>
             <SidebarComponent
               routes={routes}
               company={{
@@ -28,10 +29,11 @@ const Sidebar: FC<Props> = ({ routes }) => {
                 name: 'Will Bank'
               }}
             />
+          </S.SidebarContainer>
 
-            <S.Content>
-              <Outlet />
-            </S.Content>
+          <S.Content>
+            <Outlet />
+          </S.Content>
         </S.Main>
     </S.Container>
   )

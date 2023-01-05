@@ -15,6 +15,7 @@ import Members from './Sidebar/Members'
 import Login from './Auth/Login'
 import Code from './Auth/Code'
 import Sidebar from './Sidebar'
+import Analytics from './Sidebar/Analytics'
 
 import 'styles/global.scss'
 import Error from './Error'
@@ -33,7 +34,7 @@ const sidebarRoutes: RouteType[] = [
   { path: '/company-profile', name: 'Company Profile', icon: { component: MdDomain }, element: <CompanyProfile/> },
   { path: '/members', name: 'Members', icon: { component: MdManageAccounts }, element: <Members/> },
   { path: '/manage-plans', name: 'Manage Plan', icon: { component: BsTrophyFill, size: 16 }, element: <ManagePlans/> },
-  { path: '/analytics', name: 'Analytics', icon: { component: TiChartArea }, element: <Members/> },
+  { path: '/analytics', name: 'Analytics', icon: { component: TiChartArea }, element: <Analytics/> },
   { path: '/groups', name: 'Groups', icon: { component: RiChatSettingsFill }, element: <Members/> },
   { path: '/billing', name: 'Billing', icon: { component: HiCreditCard }, element: <Members/> }
 ]
