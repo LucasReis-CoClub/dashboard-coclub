@@ -1,11 +1,16 @@
 import React, { FC, useState } from 'react'
 import ReactCodeInput from 'react-code-input'
 
+import Strings from 'contexts/Strings'
 import { colors } from 'styles/colors'
 
 import * as S from './styles'
 
 const Code: FC = () => {
+  const { translate } = Strings.useStrings()
+
+  const [code, setCode] = useState('')
+
   const props: any = {
     inputStyle: {
       margin: '5px',
@@ -19,20 +24,20 @@ const Code: FC = () => {
       textAlign: 'center'
     }
   }
-  const [code, setCode] = useState('')
 
   const email = 'jose@willbank.com.br'
+  const description = translate('dash-page-code-description').replace('<email>', email)
 
   return (
     <S.Container>
       <S.Logo />
-      <S.Title>We sent you a code</S.Title>
+      <S.Title>{translate('dash-page-code-title')}</S.Title>
 
       <S.InputsContainer>
-        <ReactCodeInput value={code} type='number' fields={6} inputMode='numeric' name='asdasd' onChange={pinCode => setCode(pinCode)} {...props} />
+        <ReactCodeInput value={code} type='number' fields={6} inputMode='numeric' onChange={pinCode => setCode(pinCode)} {...props} />
       </S.InputsContainer>
 
-      <S.Subtitle>Can’t find your code on “{email}”?<br />Please, check your spam folder.</S.Subtitle>
+      <S.Subtitle>{description.split('<br>')[0]}<br />{description.split('<br>')[1]}</S.Subtitle>
     </S.Container>
   )
 }

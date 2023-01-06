@@ -20,6 +20,7 @@ export const Title = styled.h1`
 
 export const EditImageContainer = styled.div`
   display: flex;
+  position: relative;
   width: 140px;
   flex-direction: column;
   align-items: center;
@@ -37,10 +38,22 @@ export const EditImageButton = styled.div`
   border: 2px solid ${colors.lightGray};
   font-size: 50px;
   margin-bottom: 7px;
+  overflow: hidden;
 
   &:hover {
     cursor: pointer;
   }
+`
+
+export const EditImage = styled.img`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`
+
+export const EditImageFileInput = styled.input`
+  display: none;
 `
 
 export const Input = styled(I)`

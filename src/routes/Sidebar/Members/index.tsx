@@ -4,6 +4,7 @@ import { GoSearch } from 'react-icons/go'
 
 import Checkbox from 'components/Checkbox'
 import Dropdown from 'components/Dropdown'
+import Strings from 'contexts/Strings'
 
 import * as S from './styles'
 
@@ -22,12 +23,17 @@ const Members: FC = () => {
     { label: 'sadads11', value: '11' },
     { label: 'sadads12', value: '12' }
   ]
+
+  const { translate } = Strings.useStrings()
+
+  const users: number = 1289
+
   return (
     <S.Container>
-      <S.Title>Members</S.Title>
+      <S.Title>{translate('dash-page-members-title')}</S.Title>
 
       <S.SearchContainer>
-        <S.UsersLabel>1.289 users</S.UsersLabel>
+        <S.UsersLabel>{translate(users === 1 ? 'dash-page-members-user_count-singular' : 'dash-page-members-user_count-plural').replace('<value>', `${users.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`)}</S.UsersLabel>
 
         <S.FilterContainer>
           <S.FilterLabel>Filter by</S.FilterLabel>

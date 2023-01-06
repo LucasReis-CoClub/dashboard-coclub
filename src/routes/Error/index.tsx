@@ -1,10 +1,13 @@
 import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import Strings from 'contexts/Strings'
+
 import * as S from './styles'
 
 const Error: FC = () => {
   const navigate = useNavigate()
+  const { translate } = Strings.useStrings()
 
   return (
     <S.Container>
@@ -12,11 +15,11 @@ const Error: FC = () => {
 
       <S.Content>
         <S.TextContainer>
-          <S.Title>Oops!</S.Title>
+          <S.Title>{translate('dash-page-error-title')}</S.Title>
 
-          <S.Subtitle>{' We can\'t seem to find the page you\'re looking for.'}</S.Subtitle>
+          <S.Subtitle>{translate('dash-page-error-description')}</S.Subtitle>
 
-          <S.Button label='Home' onClick={() => navigate('/')}/>
+          <S.Button label={translate('dash-page-error-button')} onClick={() => navigate('/')}/>
         </S.TextContainer>
 
         <S.NoPageIcon />

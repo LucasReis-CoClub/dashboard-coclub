@@ -12,6 +12,7 @@ import {
 } from 'chart.js'
 
 import { colors } from 'styles/colors'
+import Strings from 'contexts/Strings'
 
 import Stonks from './Stonks'
 import * as S from './styles'
@@ -27,6 +28,8 @@ ChartJS.register(
 
 const Analytics: FC = () => {
   const scrollRef = useRef<any>()
+
+  const { translate } = Strings.useStrings()
 
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
 
@@ -111,7 +114,7 @@ const Analytics: FC = () => {
 
   return (
     <S.Container>
-      <S.Title>Analytics</S.Title>
+      <S.Title>{translate('dash-page-analytics-title')}</S.Title>
 
       <S.TopItemsContainer>
         <S.FadeContainerLeft>

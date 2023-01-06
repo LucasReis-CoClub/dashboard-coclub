@@ -8,6 +8,9 @@ import { TiChartArea } from 'react-icons/ti'
 import { RiChatSettingsFill } from 'react-icons/ri'
 import { HiCreditCard } from 'react-icons/hi'
 
+// contexts
+import Strings from 'contexts/Strings'
+
 // pages
 import ManagePlans from './Sidebar/ManagePlans'
 import CompanyProfile from './Sidebar/CompanyProfile'
@@ -30,35 +33,37 @@ export interface RouteType {
   }
 }
 
-const sidebarRoutes: RouteType[] = [
-  { path: '/company-profile', name: 'Company Profile', icon: { component: MdDomain }, element: <CompanyProfile/> },
-  { path: '/members', name: 'Members', icon: { component: MdManageAccounts }, element: <Members/> },
-  { path: '/manage-plans', name: 'Manage Plan', icon: { component: BsTrophyFill, size: 16 }, element: <ManagePlans/> },
-  { path: '/analytics', name: 'Analytics', icon: { component: TiChartArea }, element: <Analytics/> },
-  { path: '/groups', name: 'Groups', icon: { component: RiChatSettingsFill }, element: <Members/> },
-  { path: '/billing', name: 'Billing', icon: { component: HiCreditCard }, element: <Members/> }
-]
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Sidebar routes={sidebarRoutes}/>,
-    children: sidebarRoutes,
-    errorElement: <Error />
-  },
-  {
-    path: '/login',
-    element: <Login />,
-    errorElement: <Error />
-  },
-  {
-    path: '/code',
-    element: <Code />,
-    errorElement: <Error />
-  }
-])
-
 const Routes: FC = () => {
+  const { translate } = Strings.useStrings()
+
+  const sidebarRoutes: RouteType[] = [
+    { path: '/company-profile', name: translate('dash-page-company_profile-title'), icon: { component: MdDomain }, element: <CompanyProfile/> },
+    { path: '/members', name: translate('dash-page-members-title'), icon: { component: MdManageAccounts }, element: <Members/> },
+    { path: '/manage-plans', name: translate('dash-page-manage_plan-title'), icon: { component: BsTrophyFill, size: 16 }, element: <ManagePlans/> },
+    { path: '/analytics', name: translate('dash-page-analytics-title'), icon: { component: TiChartArea }, element: <Analytics/> },
+    { path: '/groups', name: translate('dash-page-groups-title'), icon: { component: RiChatSettingsFill }, element: <Members/> },
+    { path: '/billing', name: translate('dash-page-billing-title'), icon: { component: HiCreditCard }, element: <Members/> }
+  ]
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Sidebar routes={sidebarRoutes}/>,
+      children: sidebarRoutes,
+      errorElement: <Error />
+    },
+    {
+      path: '/login',
+      element: <Login />,
+      errorElement: <Error />
+    },
+    {
+      path: '/code',
+      element: <Code />,
+      errorElement: <Error />
+    }
+  ])
+
   return (
     <RouterProvider router={router}/>
   )

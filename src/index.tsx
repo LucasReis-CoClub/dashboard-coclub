@@ -10,6 +10,10 @@ import './assets/fonts/SF-Pro-Text-Bold.otf'
 import './assets/fonts/SF-Pro-Text-Heavy.otf'
 import './assets/fonts/SF-Pro-Text-Black.otf'
 
+import { PersistContextProvider } from 'contexts/Persist'
+import Strings from 'contexts/Strings'
+import Store from 'contexts/Store'
+
 import Routes from './routes'
 import reportWebVitals from './reportWebVitals'
 
@@ -18,7 +22,13 @@ const root = ReactDOM.createRoot(
 )
 root.render(
   <React.StrictMode>
-    <Routes />
+    <Store.Provider>
+      <PersistContextProvider>
+        <Strings.Provider>
+          <Routes />
+        </Strings.Provider>
+      </PersistContextProvider>
+    </Store.Provider>
   </React.StrictMode>
 )
 
