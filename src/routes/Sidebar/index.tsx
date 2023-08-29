@@ -30,7 +30,6 @@ const Sidebar: FC<Props> = ({ routes }) => {
               }}
             />
           </S.SidebarContainer>
-
           <S.Content>
             <Outlet />
           </S.Content>

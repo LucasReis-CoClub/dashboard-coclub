@@ -8,3 +8,9 @@ export const colors = {
   lightPurple: '#D3CBFB',
   success: '#43BE83'
 }
+
+export const colorsGraph = {
+  red: '#FF0000',
+  purple: '#6459E8',
+  titleAxis: '#363737'
+}

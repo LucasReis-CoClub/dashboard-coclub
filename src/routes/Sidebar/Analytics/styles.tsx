@@ -9,6 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 30px 60px;
+  /* background-color: gray; //temp */
   background-color: ${colors.lightShadow};
 `
 
@@ -95,26 +96,47 @@ export const TopItemsValue = styled.p`
   margin: 2px 0;
 `
 
-export const Item = styled.div<{ outline?: boolean }>`
+export const Item = styled.div<{ outline?: boolean, scroolable?: boolean }>`
   display: flex;
   flex-direction: column;
   background-color: ${colors.background};
-  border-radius: 20px;
-  border: ${({ outline }) => outline ? `1px solid ${colors.lightPurple}` : 0};
+  border-radius: 10px;
   padding: 20px;
   margin: 10px;
   min-width: 200px;
+  min-height: ${({ outline }) =>
+    !outline
+      ? `
+          500px
+        `
+      : ''};
+  box-shadow: 2px 3px 5px rgba(99, 99, 99, 0.3);
+  ${({ scroolable }) =>
+    scroolable
+      ? `
+          max-height: 500px;
+          overflow-y: auto;
+        `
+      : ''};
 `
 
-export const Content = styled.ul`
+export const Content = styled.div`
   width: 100%;
-  columns: 2;
-  list-style-type: none;
-  -webkit-columns: 2;
-  -moz-columns: 2;
+  /* background-color: yellow; // temp */
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 `
 
-export const ContentItem = styled.ul``
+export const ContentItem = styled.div<{ half?: boolean }>`
+  width: ${({ half }) => half ? '50%' : '100%'};
+`
+
+export const ContentRow = styled.h3`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
 
 export const ContentItemTitleContainer = styled.div`
   display: flex;
