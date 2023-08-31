@@ -3,7 +3,7 @@ import axios from 'axios'
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
   headers: {
-    'Content-Type': 'multipart/form-data', // application/x-www-form-urlencoded      multipart/form-data       application/json
+    'Content-Type': 'application/json', // application/x-www-form-urlencoded      multipart/form-data       application/json
     Accept: '*/*'
   }
 })

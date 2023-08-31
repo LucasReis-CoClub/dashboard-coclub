@@ -31,7 +31,8 @@ const Analytics: FC = () => {
   const scrollRef = useRef<any>()
   const { translate } = Strings.useStrings()
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
-
+  console.log('aq')
+  console.log(localStorage.getItem('loginData'))
   useEffect(() => {
     function handleResize () {
       setWindowDimensions(getWindowDimensions())

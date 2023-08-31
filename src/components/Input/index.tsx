@@ -6,10 +6,11 @@ interface Props {
   label?: string
   placeholder?: string
   onChange?: (value: string) => void
+  type?: 'text' | 'password'
   rightIcon?: any
 }
 
-const Input: FC<Props> = ({ label, onChange, placeholder, rightIcon, ...rest }) => {
+const Input: FC<Props> = ({ label, onChange, placeholder, rightIcon, type, ...rest }) => {
   const [isFocused, setIsFocused] = useState(false)
   const [text, setText] = useState<string>('')
 
@@ -36,6 +37,7 @@ const Input: FC<Props> = ({ label, onChange, placeholder, rightIcon, ...rest }) 
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           onChange={handleChange}
+          type={type ?? 'text'}
           ref={inputRef}
         />
 

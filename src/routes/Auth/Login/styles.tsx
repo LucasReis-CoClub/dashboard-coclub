@@ -24,6 +24,12 @@ export const Title = styled.h1`
   font-weight: 500;
 `
 
+export const TextErrorMessage = styled.h5`
+  color: red;
+  font-weight: 400;
+  margin-top: 10px;
+`
+
 export const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,7 +37,9 @@ export const InputsContainer = styled.div`
   margin-top: 40px;
 `
 
-export const Input = styled(I)``
+export const Input = styled(I)`
+  margin-top: 5px;
+`
 
 export const Button = styled(B).attrs({
   styles: {
