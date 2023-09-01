@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Outlet } from 'react-router-dom'
 
-import { RouteType } from 'routes'
+import { RouteType } from '../../dto/route'
 
 // components
 import Header from 'components/Header'

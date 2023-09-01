@@ -5,11 +5,12 @@ import * as S from './styles'
 import Strings from 'contexts/Strings'
 
 import { AxiosError } from 'axios'
-import { LoginData } from 'dto/login'
 import { useNavigate } from 'react-router-dom'
 import { ResponseApiError } from 'dto/responseError'
 import { useHandledService } from 'hooks/handledService'
-import { SaveLoginDataAtLocalStorage, ShowLoginErroMessage } from 'util/LoginFuncs'
+import { ShowLoginErroMessage } from 'util/LoginFuncs'
+import { setUserToken } from 'services/UserToken'
+import { ConstLocalStorage } from 'configs/Constants'
 
 const Login: FC = () => {
   const { translate } = Strings.useStrings()
@@ -33,8 +34,8 @@ const Login: FC = () => {
       })
         .then(async (response: any) => {
           /* save data at local storage */
-          await SaveLoginDataAtLocalStorage(response.data.data)
-          navigate('/analytics')
+          await setUserToken(response.data.data)
+          navigate('/')
         })
         .catch((err: AxiosError) => {
           setErrorMessage(ShowLoginErroMessage(err.response?.data as ResponseApiError))

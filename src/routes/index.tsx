@@ -1,38 +1,33 @@
-import React, { FC } from 'react'
+/* imports */
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import React, { FC } from 'react'
 
-// icons
+/* icons */
 import { MdDomain, MdManageAccounts } from 'react-icons/md'
-import { BsTrophyFill } from 'react-icons/bs'
-import { TiChartArea } from 'react-icons/ti'
 import { RiChatSettingsFill } from 'react-icons/ri'
 import { HiCreditCard } from 'react-icons/hi'
+import { BsTrophyFill } from 'react-icons/bs'
+import { TiChartArea } from 'react-icons/ti'
 
-// contexts
+/* context */
 import Strings from 'contexts/Strings'
 
-// pages
-import ManagePlans from './Sidebar/ManagePlans'
+/* pages */
 import CompanyProfile from './Sidebar/CompanyProfile'
+import ManagePlans from './Sidebar/ManagePlans'
+import Analytics from './Sidebar/Analytics'
 import Members from './Sidebar/Members'
 import Login from './Auth/Login'
-import Code from './Auth/Code'
 import Sidebar from './Sidebar'
-import Analytics from './Sidebar/Analytics'
+import Code from './Auth/Code'
 
-import 'styles/global.scss'
+/* others */
+import { ProtectedRoute } from 'components/ProtectedRoute'
+import { RouteType } from '../dto/route'
 import Error from './Error'
+import 'styles/global.scss'
 
-export interface RouteType {
-  path: string
-  element: any
-  name?: string
-  icon?: {
-    size?: number
-    component: any
-  }
-}
-
+/* FC to define routes */
 const Routes: FC = () => {
   const { translate } = Strings.useStrings()
 
@@ -49,7 +44,10 @@ const Routes: FC = () => {
     {
       path: '/',
       element: <Sidebar routes={sidebarRoutes}/>,
-      children: sidebarRoutes,
+      children: sidebarRoutes.map((route) => ({
+        ...route,
+        element: <ProtectedRoute element={ route.element }/>
+      })),
       errorElement: <Error />
     },
     {

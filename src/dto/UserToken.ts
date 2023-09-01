@@ -1,4 +1,4 @@
-export type LoginData = {
+export interface UserToken {
   accessToken: string
   expiry: Date
   idToken: string

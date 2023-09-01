@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { RouteType } from 'routes'
+import { RouteType } from '../../dto/route'
 
 import Item from './Item'
 import * as S from './styles'
