@@ -26,6 +26,7 @@ import { ProtectedRoute } from 'components/ProtectedRoute'
 import { RouteType } from '../dto/route'
 import Error from './Error'
 import 'styles/global.scss'
+// import { clearUserToken } from 'services/UserToken'
 
 /* FC to define routes */
 const Routes: FC = () => {
@@ -63,7 +64,7 @@ const Routes: FC = () => {
   ])
 
   return (
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   )
 }
 

@@ -11,6 +11,7 @@ export const Container = styled.div`
   padding: 30px 60px;
   /* background-color: gray; //temp */
   background-color: ${colors.lightShadow};
+   overflow-y: auto;
 `
 
 export const Title = styled.h1`
@@ -110,6 +111,7 @@ export const Item = styled.div<{ outline?: boolean, scroolable?: boolean }>`
           500px
         `
       : ''};
+  max-height: 500px;
   box-shadow: 2px 3px 5px rgba(99, 99, 99, 0.3);
   ${({ scroolable }) =>
     scroolable
@@ -136,6 +138,12 @@ export const ContentRow = styled.h3`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`
+
+export const ChartSectionTitle = styled.h3`
+`
+
+export const ChartSection = styled.div`
 `
 
 export const ContentItemTitleContainer = styled.div`

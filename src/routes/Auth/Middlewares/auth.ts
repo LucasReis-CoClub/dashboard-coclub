@@ -1,5 +1,3 @@
-// import { getUserToken } from 'services/UserToken'
-
-// export const isAuthenticated = async () => {
-//   const userToken = await getUserToken()
-// }
+export const isAuthenticated = async () => {
+  return true
+}

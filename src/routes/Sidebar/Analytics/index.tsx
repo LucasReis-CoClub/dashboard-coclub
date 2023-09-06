@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend
 } from 'chart.js'
-import { Chart } from 'react-google-charts' // Removed unused import
+// import { Chart } from 'react-google-charts' // Removed unused import
 import { colors } from 'styles/colors'
 import Strings from 'contexts/Strings'
 import Stonks from './Stonks'
@@ -17,20 +17,17 @@ import * as S from './styles'
 
 /* temp */
 import { data, dataUE, optionsUE } from './temp'
+import { TitleChart } from 'components/TitleChart'
+import Chart from 'react-google-charts'
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-)
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const Analytics: FC = () => {
   const scrollRef = useRef<any>()
   const { translate } = Strings.useStrings()
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  )
   console.log('aq')
   console.log(localStorage.getItem('loginData'))
   useEffect(() => {
@@ -51,9 +48,12 @@ const Analytics: FC = () => {
   }
 
   const scroll = (left: boolean) => {
-    const scrollOffset = (windowDimensions.width * 0.5) * (left ? -1 : 1)
+    const scrollOffset = windowDimensions.width * 0.5 * (left ? -1 : 1)
     const currentScroll = scrollRef.current.scrollLeft as number
-    scrollRef.current.scroll({ left: currentScroll + scrollOffset, behavior: 'smooth' })
+    scrollRef.current.scroll({
+      left: currentScroll + scrollOffset,
+      behavior: 'smooth'
+    })
   }
 
   return (
@@ -68,24 +68,19 @@ const Analytics: FC = () => {
         </S.FadeContainerLeft>
 
         <S.TopItemsScroll ref={scrollRef}>
-          {
-            (data.map((item, index) =>
-              <S.Item key={`${index}`} outline>
-                <S.TopItemsTitle>{item.title}</S.TopItemsTitle>
-                <S.TopItemsValue>{item.value}</S.TopItemsValue>
-                {
-                  !!item.date && (
-                    <S.TopItemsTitle>{item.date}</S.TopItemsTitle>
-                  )
-                }
-                {
-                  !!item.stonks && (
-                    <Stonks positive={item.stonks.positive} text={item.stonks.text} />
-                  )
-                }
-              </S.Item>
-            ))
-          }
+          {data.map((item, index) => (
+            <S.Item key={`${index}`} outline>
+              <S.TopItemsTitle>{item.title}</S.TopItemsTitle>
+              <S.TopItemsValue>{item.value}</S.TopItemsValue>
+              {!!item.date && <S.TopItemsTitle>{item.date}</S.TopItemsTitle>}
+              {!!item.stonks && (
+                <Stonks
+                  positive={item.stonks.positive}
+                  text={item.stonks.text}
+                />
+              )}
+            </S.Item>
+          ))}
         </S.TopItemsScroll>
 
         <S.FadeContainerRight>
@@ -96,36 +91,52 @@ const Analytics: FC = () => {
       </S.TopItemsContainer>
 
       <S.Content>
-        <S.ContentRow>
-          <S.ContentItem half>
-            <S.Item>
-              <S.ContentItemTitleContainer>
-                <S.ContentItemTitle>Novos Membros - Último Ano</S.ContentItemTitle>
-                <Stonks positive text='+22%' />
-              </S.ContentItemTitleContainer>
-            </S.Item>
-          </S.ContentItem>
-          <S.ContentItem half>
-            <S.Item scroolable>
-              <S.ContentItemTitleContainer>
-                <S.ContentItemTitle>Usuários Engajados</S.ContentItemTitle>
-                <Stonks positive text='+22%' />
-              </S.ContentItemTitleContainer>
-              <Chart
-                chartType="BarChart"
-                width="100%"
-                data={dataUE}
-                options={optionsUE}
-              />
-            </S.Item>
-          </S.ContentItem>
-        </S.ContentRow>
-
+        <S.ChartSection>
+          <S.ChartSectionTitle>Engajamento de Usuário</S.ChartSectionTitle>
+          <S.ContentRow>
+            <S.ContentItem half>
+              <S.Item>
+                <S.ContentItemTitleContainer>
+                  <TitleChart
+                    positiveStonks={true}
+                    title="Novos Membros - Último Ano"
+                    textStonks="22%"
+                  />
+                  <Chart
+                    chartType="Line"
+                    width="100%"
+                    data={data}
+                    options={optionsUE}
+                  />
+                </S.ContentItemTitleContainer>
+              </S.Item>
+            </S.ContentItem>
+            <S.ContentItem half>
+              <S.Item scroolable>
+                <S.ContentItemTitleContainer>
+                  <TitleChart
+                    positiveStonks={true}
+                    title="Usuários Engajados"
+                    textStonks="25%"
+                  />
+                </S.ContentItemTitleContainer>
+                <Chart
+                  chartType="BarChart"
+                  width="100%"
+                  data={dataUE}
+                  options={optionsUE}
+                />
+              </S.Item>
+            </S.ContentItem>
+          </S.ContentRow>
+        </S.ChartSection>
         <S.ContentItem>
           <S.Item>
             <S.ContentItemTitleContainer>
-              <S.ContentItemTitle>Novos Membros - Último Ano</S.ContentItemTitle>
-              <Stonks positive text='+22%' />
+              <S.ContentItemTitle>
+                Novos Membros - Último Ano
+              </S.ContentItemTitle>
+              <Stonks positive text="+22%" />
             </S.ContentItemTitleContainer>
           </S.Item>
         </S.ContentItem>
