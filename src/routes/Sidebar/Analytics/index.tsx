@@ -16,9 +16,25 @@ import Stonks from './Stonks'
 import * as S from './styles'
 
 /* temp */
-import { data, dataUE, optionsUE } from './temp'
-import { TitleChart } from 'components/TitleChart'
-import Chart from 'react-google-charts'
+import {
+  data,
+  dataConnDiff,
+  dataGeo,
+  dataMainInterest,
+  dataNewMembers,
+  dataUE,
+  optionsConn,
+  optionsMainInterest,
+  optionsNewMembers,
+  optionsUE
+} from './temp'
+import { ChartSection } from 'components/ChartSection'
+import { UsersEngagedChart } from 'components/Charts/usersEngaged'
+import { TopUserInterestChart } from 'components/Charts/topUserInterest'
+import { TopUsersChart } from 'components/Charts/topUsers'
+import { UsersConnections } from 'components/Charts/usersConnections'
+import { UsersRegionChart } from 'components/Charts/usersRegion'
+import { UsersCitiesChart } from 'components/Charts/usersCities'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -91,55 +107,29 @@ const Analytics: FC = () => {
       </S.TopItemsContainer>
 
       <S.Content>
-        <S.ChartSection>
-          <S.ChartSectionTitle>Engajamento de Usuário</S.ChartSectionTitle>
-          <S.ContentRow>
-            <S.ContentItem half>
-              <S.Item>
-                <S.ContentItemTitleContainer>
-                  <TitleChart
-                    positiveStonks={true}
-                    title="Novos Membros - Último Ano"
-                    textStonks="22%"
-                  />
-                  <Chart
-                    chartType="Line"
-                    width="100%"
-                    data={data}
-                    options={optionsUE}
-                  />
-                </S.ContentItemTitleContainer>
-              </S.Item>
-            </S.ContentItem>
-            <S.ContentItem half>
-              <S.Item scroolable>
-                <S.ContentItemTitleContainer>
-                  <TitleChart
-                    positiveStonks={true}
-                    title="Usuários Engajados"
-                    textStonks="25%"
-                  />
-                </S.ContentItemTitleContainer>
-                <Chart
-                  chartType="BarChart"
-                  width="100%"
-                  data={dataUE}
-                  options={optionsUE}
-                />
-              </S.Item>
-            </S.ContentItem>
-          </S.ContentRow>
-        </S.ChartSection>
-        <S.ContentItem>
-          <S.Item>
-            <S.ContentItemTitleContainer>
-              <S.ContentItemTitle>
-                Novos Membros - Último Ano
-              </S.ContentItemTitle>
-              <Stonks positive text="+22%" />
-            </S.ContentItemTitleContainer>
-          </S.Item>
-        </S.ContentItem>
+
+        {/* Engajamento de usuários */}
+        <ChartSection title="Engajamento do Usuário">
+          <UsersEngagedChart data={dataNewMembers} options={optionsNewMembers} />
+        </ChartSection>
+
+        {/* top usuários e usuários engajados */}
+        <ChartSection title="Top Usuário e Interesses">
+          <TopUserInterestChart data={dataMainInterest} options={optionsMainInterest} />
+          <TopUsersChart data={dataUE} options={optionsUE} />
+        </ChartSection>
+
+        {/* Conexões e amizades de usuários */}
+        <ChartSection title="Conexões do Usuário">
+          <UsersConnections data={dataConnDiff} options={optionsConn} />
+        </ChartSection>
+
+        {/* Localidade dos Usuários */}
+        <ChartSection title="Localidade dos usuários">
+          <UsersRegionChart data={dataGeo} />
+          <UsersCitiesChart data={dataConnDiff} options={optionsConn} />
+        </ChartSection>
+
       </S.Content>
     </S.Container>
   )

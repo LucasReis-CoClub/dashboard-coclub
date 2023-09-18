@@ -9,12 +9,16 @@ export const TitleChart = ({
 }: {
   title: string
   positiveStonks: boolean
-  textStonks: string
+  textStonks?: string
 }) => {
   return (
-    <>
+    <div style={{
+      width: '100%'
+    }}>
       <S.ContentItemTitle>{title}</S.ContentItemTitle>
-      <Stonks positive={positiveStonks} text={textStonks} />
-    </>
+      {
+        textStonks !== undefined && <Stonks positive={positiveStonks} text={textStonks} />
+      }
+    </div>
   )
 }

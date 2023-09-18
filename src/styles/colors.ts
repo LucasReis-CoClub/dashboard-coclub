@@ -11,6 +11,7 @@ export const colors = {
 
 export const colorsGraph = {
   red: '#FF0000',
-  purple: '#6459E8',
+  purple: '#A157B4',
+  blue: '#6459E8',
   titleAxis: '#363737'
 }

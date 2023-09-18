@@ -168,9 +168,9 @@ export const optionsUE: GoogleChartOptions = {
   bar: { groupWidth: '25' },
   legend: { position: 'none' },
   backgroundColor: '',
-  colors: [colorsGraph.purple],
+  colors: [colorsGraph.blue],
   chartArea: {
-    width: '80%',
+    width: '70%',
     top: 20,
     bottom: 1,
     left: 150
@@ -190,6 +190,238 @@ export const optionsUE: GoogleChartOptions = {
       bold: false
     }
   },
-  height: 2400,
-  bold: false
+  height: ((dataUE.length - 1) / 2) * 100,
+  bold: false,
+
+  annotations: {
+    textStyle: {
+      fontSize: 15 // Adjust the font size as needed
+    }
+  }
 }
+
+//
+//
+//
+//
+//
+
+/* interesses principais */
+
+export const dataMainInterest = [
+  [
+    'Element',
+    'Density',
+    {
+      sourceColumn: 0,
+      role: 'annotation',
+      type: 'string',
+      calc: 'stringify'
+    }
+  ],
+  ['Séries', 100, 100],
+  ['Filmes', 95, 95],
+  ['Futebol ', 93, 93],
+  ['Viagens', 84, 84],
+  ['Comidas', 80, 80],
+  ['Jogos de Tabuleiro', 60, 60],
+  ['Happy Hour', 55, 55],
+  ['Futevôlei', 51, 51],
+  ['Surf', 10, 10]
+]
+
+export const optionsMainInterest: GoogleChartOptions = {
+  bar: { groupWidth: '25' },
+  legend: { position: 'none' },
+  backgroundColor: '',
+  colors: [colorsGraph.purple],
+  chartArea: {
+    width: '70%',
+    top: 20,
+    bottom: 1,
+    left: 150
+  },
+  hAxis: {
+    textStyle: {
+      fontSize: 11,
+      color: colorsGraph.titleAxis,
+      bold: false
+    },
+    textPosition: 'none'
+  },
+  vAxis: {
+    textStyle: {
+      fontSize: 13,
+      color: colorsGraph.titleAxis,
+      bold: false
+    }
+  },
+  height: ((dataMainInterest.length - 1) / 2) * 100,
+  bold: false,
+  annotations: {
+    textStyle: {
+      fontSize: 15 // Adjust the font size as needed
+    }
+  }
+}
+
+//
+//
+//
+//
+//
+
+/* novos membros */
+
+export const dataNewMembers = [
+  ['mês', 'Total de Usuários'],
+  ['jan', 10],
+  ['fev', 3],
+  ['mar', 35],
+  ['abr', 24],
+  ['mai', 21],
+  ['jun', 15],
+  ['jul', 32],
+  ['ago', 12],
+  ['set', 24],
+  ['out', 10],
+  ['nov', 8],
+  ['dez', 6]
+]
+
+export const optionsNewMembers: GoogleChartOptions = {
+  backgroundColor: '',
+  // height:
+  height: 400,
+  chartArea: {
+    width: '95%',
+    height: '80%'
+  },
+  legend: {
+    position: 'bottom'
+  },
+  colors: [colorsGraph.red],
+  hAxis: {
+    textStyle: {
+      fontSize: 11,
+      color: colorsGraph.titleAxis,
+      bold: false
+    }
+  },
+  vAxis: {
+    textStyle: {
+      fontSize: 13,
+      color: colorsGraph.titleAxis,
+      bold: false
+    }
+  }
+}
+//
+//
+//
+//
+//
+
+//
+//
+//
+//
+//
+
+/* novos membros */
+export const dataOld = [
+  ['mês', 'Total de Usuários'],
+  ['jan', 10],
+  ['fev', 3],
+  ['mar', 35],
+  ['abr', 24],
+  ['mai', 21],
+  ['jun', 15],
+  ['jul', 32],
+  ['ago', 12],
+  ['set', 24],
+  ['out', 10],
+  ['nov', 8],
+  ['dez', 6]
+]
+
+export const dataNew = [
+  ['mês', 'Total de Usuários'],
+  ['jan', 9],
+  ['fev', 1],
+  ['mar', 3],
+  ['abr', 4],
+  ['mai', 1],
+  ['jun', 5],
+  ['jul', 2],
+  ['ago', 2],
+  ['set', 4],
+  ['out', 0],
+  ['nov', 5],
+  ['dez', 4]
+]
+
+export const dataConnDiff = {
+  old: dataOld,
+  new: dataNew
+}
+
+export const optionsConn: GoogleChartOptions = {
+  backgroundColor: '',
+  // height:
+  height: 400,
+  chartArea: {
+    width: '65%',
+    height: '80%'
+  },
+  legend: {
+    alignment: 'center'
+  },
+  colors: [colorsGraph.red],
+  hAxis: {
+    textStyle: {
+      fontSize: 11,
+      color: colorsGraph.titleAxis,
+      bold: false
+    }
+  },
+  vAxis: {
+    textStyle: {
+      fontSize: 13,
+      color: colorsGraph.titleAxis,
+      bold: false
+    }
+  }
+}
+//
+//
+//
+//
+//
+
+//
+//
+//
+//
+//
+
+/* localidade */
+
+export const dataGeo = [
+  ['Country', 'Population', 'Area Percentage'],
+  ['France', 65700000, 50],
+  ['Germany', 81890000, 27],
+  ['Poland', 38540000, 23]
+]
+
+export const optionsGeo = {
+  displayMode: 'markers',
+  colorAxis: {
+    colors: ['green', 'blue']
+  }
+}
+//
+//
+//
+//
+//

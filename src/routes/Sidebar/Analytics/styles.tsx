@@ -8,7 +8,7 @@ export const Container = styled.div`
   width: 100%;
   flex-direction: column;
   align-items: center;
-  padding: 30px 60px;
+  padding: 30px 60px 80px 60px;
   /* background-color: gray; //temp */
   background-color: ${colors.lightShadow};
    overflow-y: auto;
@@ -97,6 +97,15 @@ export const TopItemsValue = styled.p`
   margin: 2px 0;
 `
 
+export const Content = styled.div`
+  width: 100%;
+  /* background-color: yellow; // temp */
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+`
+// del
+
 export const Item = styled.div<{ outline?: boolean, scroolable?: boolean }>`
   display: flex;
   flex-direction: column;
@@ -122,14 +131,6 @@ export const Item = styled.div<{ outline?: boolean, scroolable?: boolean }>`
       : ''};
 `
 
-export const Content = styled.div`
-  width: 100%;
-  /* background-color: yellow; // temp */
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-`
-
 export const ContentItem = styled.div<{ half?: boolean }>`
   width: ${({ half }) => half ? '50%' : '100%'};
 `
@@ -138,26 +139,10 @@ export const ContentRow = styled.h3`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-`
-
-export const ChartSectionTitle = styled.h3`
-`
-
-export const ChartSection = styled.div`
+  width: 100%;
 `
 
 export const ContentItemTitleContainer = styled.div`
   display: flex;
   flex-direction: row;
-`
-
-export const ContentItemTitle = styled.h2`
-  font-size: 16px;
-  margin-right: 10px;
-`
-
-export const ContentItemSubtitle = styled.h3`
-  font-size: 14px;
-  margin-right: 10px;
-  font-weight: 300;
 `
