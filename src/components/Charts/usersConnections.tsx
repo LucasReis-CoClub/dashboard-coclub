@@ -13,13 +13,13 @@ export const UsersConnections = ({
   return (
     <S.ContentRow>
       <S.ContentItem>
-        <S.Item>
+        <S.Item scroolable>
           <S.ContentItemTitleContainer>
             <TitleChart positiveStonks={true} title="Conexões" />
           </S.ContentItemTitleContainer>
 
           {/* conexão */}
-          <Chart chartType="BarChart" diffdata={data} options={options} />
+          <Chart chartType="BarChart" data={data} options={options} />
         </S.Item>
       </S.ContentItem>
     </S.ContentRow>

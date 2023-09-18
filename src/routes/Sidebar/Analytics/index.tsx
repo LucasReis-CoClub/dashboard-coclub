@@ -18,11 +18,13 @@ import * as S from './styles'
 /* temp */
 import {
   data,
+  dataCities,
   dataConnDiff,
   dataGeo,
   dataMainInterest,
   dataNewMembers,
   dataUE,
+  optionsCities,
   optionsConn,
   optionsMainInterest,
   optionsNewMembers,
@@ -120,14 +122,14 @@ const Analytics: FC = () => {
         </ChartSection>
 
         {/* Conexões e amizades de usuários */}
-        <ChartSection title="Conexões do Usuário">
+        <ChartSection title="Conexões e Amizades">
           <UsersConnections data={dataConnDiff} options={optionsConn} />
         </ChartSection>
 
         {/* Localidade dos Usuários */}
         <ChartSection title="Localidade dos usuários">
           <UsersRegionChart data={dataGeo} />
-          <UsersCitiesChart data={dataConnDiff} options={optionsConn} />
+          <UsersCitiesChart data={dataCities} options={optionsCities} />
         </ChartSection>
 
       </S.Content>
