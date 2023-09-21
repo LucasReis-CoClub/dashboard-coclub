@@ -1,42 +1,50 @@
+/* eslint-disable */
 import { GoogleChartOptions } from 'react-google-charts'
 import { colorsGraph } from 'styles/colors'
 
 export const defaultOptions: GoogleChartOptions = {
   backgroundColor: '',
   chartArea: { width: '85%', height: '80%' }, // default
-  bar: { groupWidth: '25' },
+  bar: { groupWidth: '10' },
   legend: {
     position: 'top',
-    textStyle: { fontSize: 12, color: colorsGraph.titleAxis },
+    textStyle: { fontSize: 13, color: colorsGraph.titleAxis },
     alignment: 'center'
   },
   hAxis: {
-    textStyle: {
-      fontSize: 11,
-      color: colorsGraph.titleAxis,
-      bold: false
-    }
-  },
-  vAxis: {
+    gridlines: {
+      color: 'transparent', // Define a cor das linhas de grade horizontal como transparente
+    },
     textStyle: {
       fontSize: 13,
       color: colorsGraph.titleAxis,
-      bold: false
+    }
+  },
+  vAxis: {    
+    textStyle: {
+      fontSize: 13,
+      color: colorsGraph.titleAxis,
     }
   },
   bold: false,
   annotations: {
     textStyle: {
-      fontSize: 15 // Adjust the font size as needed
+      fontSize: 15, // Adjust the font size as needed
     }
   },
-  tooltip: { textStyle: { fontSize: 13 } }
+  tooltip: {
+    isHtml: true,
+    formatter: (tooltipData: any) => {
+      return `<div>${tooltipData.dataTable.getValue(tooltipData.row, 0)} unidades</div>`
+    },
+    textStyle: { fontSize: 13 }
+  }
 }
 
 const chartArea = {
   barChart: {
     chartArea: {
-      width: '70%',
+      width: '65%',
       top: 20,
       bottom: 1,
       left: 150
@@ -56,7 +64,7 @@ export const data = [
     value: 3.789,
     date: null,
     stonks: {
-      text: '+15%',
+      text: '+16%',
       positive: true
     }
   },
@@ -104,28 +112,11 @@ export const data = [
   }
 ]
 
-export const dataGraph = [
-  ['Mês', 'Total'],
-  ['jan', 1000],
-  ['fev', 1170],
-  ['mar', 660],
-  ['abr', 1030],
-  ['mai', 124],
-  ['jun', 521],
-  ['jul', 51],
-  ['ago', 1030],
-  ['set', 12],
-  ['out', 654],
-  ['nov', 456],
-  ['dez', 124]
-]
-
 export const options: GoogleChartOptions = {
   ...defaultOptions,
-  legend: { position: 'none' },
-  backgroundColor: '',
-  colors: [colorsGraph.blue],
   ...chartArea.barChart,
+  legend: { position: 'none' },
+  colors: [colorsGraph.blue],
   hAxis: {
     textStyle: {
       fontSize: 11,
@@ -152,13 +143,16 @@ export const options: GoogleChartOptions = {
 /* usuarios engajados */
 export const dataUE = [
   [
-    'Element',
-    'Density',
+    'Usuário',
+    'Total de atividade ',
     {
       sourceColumn: 0,
       role: 'annotation',
       type: 'string',
       calc: 'stringify'
+    },
+    {
+      role: 'style'
     }
   ],
   ['João Silva Santos', 100, 100],
@@ -219,16 +213,9 @@ export const dataUE = [
 
 export const optionsUE: GoogleChartOptions = {
   ...defaultOptions,
-  bar: { groupWidth: '25' },
-  legend: { position: 'none' },
   colors: [colorsGraph.blue],
   ...chartArea.barChart,
   height: ((dataUE.length - 1) / 2) * 100,
-  annotations: {
-    textStyle: {
-      fontSize: 15 // Adjust the font size as needed
-    }
-  }
 }
 
 //
@@ -242,12 +229,15 @@ export const optionsUE: GoogleChartOptions = {
 export const dataMainInterest = [
   [
     'Interesses',
-    'Total',
+    'Total de usuários',
     {
       sourceColumn: 0,
       role: 'annotation',
       type: 'string',
       calc: 'stringify'
+    },
+    {
+      role: 'style'
     }
   ],
   ['Séries', 100, 100],
@@ -265,7 +255,6 @@ export const optionsMainInterest: GoogleChartOptions = {
   ...defaultOptions,
   ...chartArea.barChart,
   colors: [colorsGraph.purple],
-  legend: { position: 'none' },
   height: ((dataMainInterest.length - 1) / 2) * 100
 }
 
@@ -278,26 +267,26 @@ export const optionsMainInterest: GoogleChartOptions = {
 /* novos membros */
 
 export const dataNewMembers = [
-  ['mês', 'Total'],
-  ['jan', 10],
-  ['fev', 3],
-  ['mar', 35],
-  ['abr', 24],
-  ['mai', 21],
-  ['jun', 15],
-  ['jul', 32],
-  ['ago', 12],
-  ['set', 24],
-  ['out', 10],
-  ['nov', 8],
-  ['dez', 6]
+  ['Mês', 'Total'],
+  ['JAN', 10],
+  ['FEV', 3],
+  ['MAR', 35],
+  ['ABR', 24],
+  ['MAI', 21],
+  ['JUN', 15],
+  ['JUL', 32],
+  ['AGO', 12],
+  ['SET', 24],
+  ['OUT', 10],
+  ['NOV', 8],
+  ['DEZ', 6]
 ]
 
 export const optionsNewMembers: GoogleChartOptions = {
   ...defaultOptions,
-  height: 450,
   ...chartArea.lineChart,
-  colors: [colorsGraph.red]
+  height: 450,
+  colors: [colorsGraph.purple]
 }
 //
 //
@@ -344,14 +333,14 @@ export const dataConnDiff = [
 
 export const optionsConn: GoogleChartOptions = {
   ...defaultOptions,
-  bar: { groupWidth: '35' },
+  bar: { groupWidth: '37' },
   chartArea: {
     width: '65%',
     height: '80%',
     top: 20,
     bottom: 1
   },
-  colors: [colorsGraph.darkCian, colorsGraph.cian],
+  colors: [colorsGraph.purple, colorsGraph.orange],
   height: ((dataConnDiff.length - 1) / 2) * 120
 }
 //
@@ -375,11 +364,10 @@ export const dataGeo = [
   ['Poland', 38540000, 23]
 ]
 
-export const optionsGeo = {
+export const optionsGeo: GoogleChartOptions = {
   displayMode: 'markers',
-  colorAxis: {
-    colors: ['green', 'blue']
-  }
+  backgroundColor: '',
+  height: 500
 }
 
 export const dataCities = [
@@ -391,6 +379,9 @@ export const dataCities = [
       role: 'annotation',
       type: 'string',
       calc: 'stringify'
+    },
+    {
+      role: 'style'
     }
   ],
   ['São Paulo', 250, 250],
@@ -416,41 +407,9 @@ export const dataCities = [
 ]
 
 export const optionsCities: GoogleChartOptions = {
-  bar: { groupWidth: '25' },
-  legend: { position: 'none' },
+  ...defaultOptions,
+  ...chartArea.barChart,
   backgroundColor: '',
-  colors: [colorsGraph.purple],
-  chartArea: {
-    width: '70%',
-    top: 20,
-    bottom: 1,
-    left: 150
-  },
-  hAxis: {
-    textStyle: {
-      fontSize: 11,
-      color: colorsGraph.titleAxis,
-      bold: false
-    },
-    textPosition: 'none'
-  },
-  vAxis: {
-    textStyle: {
-      fontSize: 13,
-      color: colorsGraph.titleAxis,
-      bold: false
-    }
-  },
-  height: ((dataCities.length - 1) / 2) * 100,
-  bold: false,
-  annotations: {
-    textStyle: {
-      fontSize: 15 // Adjust the font size as needed
-    }
-  }
+  colors: [colorsGraph.lightGreen],
+  height: ((dataCities.length - 1) / 2) * 100
 }
-//
-//
-//
-//
-//

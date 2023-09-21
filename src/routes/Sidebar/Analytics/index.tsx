@@ -26,6 +26,7 @@ import {
   dataUE,
   optionsCities,
   optionsConn,
+  optionsGeo,
   optionsMainInterest,
   optionsNewMembers,
   optionsUE
@@ -37,6 +38,7 @@ import { TopUsersChart } from 'components/Charts/topUsers'
 import { UsersConnections } from 'components/Charts/usersConnections'
 import { UsersRegionChart } from 'components/Charts/usersRegion'
 import { UsersCitiesChart } from 'components/Charts/usersCities'
+import { generateChartData } from 'util/ChartFuncs'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -117,8 +119,8 @@ const Analytics: FC = () => {
 
         {/* top usuários e usuários engajados */}
         <ChartSection title="Top Usuário e Interesses">
-          <TopUserInterestChart data={dataMainInterest} options={optionsMainInterest} />
-          <TopUsersChart data={dataUE} options={optionsUE} />
+          <TopUserInterestChart data={generateChartData(dataMainInterest)} options={optionsMainInterest} />
+          <TopUsersChart data={generateChartData(dataUE)} options={optionsUE} />
         </ChartSection>
 
         {/* Conexões e amizades de usuários */}
@@ -128,8 +130,8 @@ const Analytics: FC = () => {
 
         {/* Localidade dos Usuários */}
         <ChartSection title="Localidade dos usuários">
-          <UsersRegionChart data={dataGeo} />
-          <UsersCitiesChart data={dataCities} options={optionsCities} />
+          <UsersRegionChart data={dataGeo} options={optionsGeo} />
+          <UsersCitiesChart data={generateChartData(dataCities)} options={optionsCities} />
         </ChartSection>
 
       </S.Content>
